@@ -1,0 +1,14 @@
+
+.footer > .ref > a{
+  color: #333333;
+}
+
+/* a { color: #333333; } */
+.footer > .myself{
+  color: #999999;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}

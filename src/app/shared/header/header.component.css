@@ -1,0 +1,19 @@
+.header {
+  background-color: #ffffff;
+}
+
+.brand-icon {
+  vertical-align: middle;
+  text-align: left;
+}
+
+.nav-icon {
+  max-height:40px;
+  max-width:40px;
+}
+
+.navbar-height {
+  height:45px;
+}
+
+a { color:#999999; }

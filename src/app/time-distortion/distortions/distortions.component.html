@@ -1,0 +1,20 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="row .col-md-4">
+  <div class="well well-sm">
+    {{prodRunning}} Test Test
+    Current planned schedules {{serverIp}}
+  </div>
+  <div *ngIf="loadedSchedules">
+    <div class="space-well well well-sm content contentWell" *ngFor="let schedule of schedules">
+      <div class="content content1" (click)="loadSchedule(schedule.name)">
+        <i *ngIf="schedule.state==3" class="fa fa-question-circle"></i>
+        <i *ngIf="schedule.state==2" class="fa fa-ban"></i>
+        <i *ngIf="schedule.state==1" class="fa fa-play"></i>
+        {{ schedule.name }} : {{schedule.stateName}}
+      </div>
+      <div class="content content2" [style.color]="getColor(schedule)" (click)="finishTask(schedule)">
+        <i *ngIf="schedule.state==1" class="right fa fa-check-circle"></i>
+      </div>
+    </div>
+</div>

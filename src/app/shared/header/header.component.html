@@ -1,0 +1,54 @@
+<!-- <nav class="navbar navbar-inverse fixed-top header">
+  <! -- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> - ->
+  <a class="navbar-brand" href="#">Welcome to {{ title }}!</a>
+  <div class="row">
+    <div class="nav-icon" routerLink="/landing">
+      <img src="assets/navicon/lander-1.png" alt="Landing" style="height: 50%; width: 50%; object-fit: contain">
+    </div>
+    <div class="nav-icon" routerLink="/time-distortion">
+      <img src="assets/navicon/big-dipper.png" alt="Landing" style="height: 50%; width: 50%; object-fit: contain">
+    </div>
+    <div class="nav-icon" routerLink="/landing">
+      <img src="assets/navicon/lander-1.png" alt="Landing" style="height: 50%; width: 50%; object-fit: contain">
+    </div>
+  </div>
+</nav> -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-icon">
+        <img src="assets/navicon/star.png" alt="Star" style="height:40px; width:40px; object-fit: contain">
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Galaxy</a></li>
+        <li>
+          <a routerLink="/landing">
+            <img src="assets/navicon/lander-1.png" alt="Landing" style="height:25px; width:25px; object-fit: contain">
+            Landing
+          </a>
+        </li>
+        <li>
+          <a routerLink="/time-distortion">
+            <img src="assets/navicon/big-dipper.png" alt="Landing" style="height:25px; width:25px; object-fit: contain">
+            Time Distortion
+          </a>
+        </li>
+        <li>
+          <a routerLink="/shipyard">
+            <img src="assets/navicon/hubble-space-telescope.png" alt="Shipyard" style="height:25px; width:25px; object-fit: contain">
+            Shipyard
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

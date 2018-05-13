@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-sm-4">
+    <app-distortions
+      (onLoadSchedule)="setScheduleName($event)">
+    </app-distortions>
+  </div>
+  <div *ngIf="scheduleName" class="col-sm-8">
+    <app-schedule
+      [sName]="scheduleName">
+    </app-schedule>
+  </div>
+</div>

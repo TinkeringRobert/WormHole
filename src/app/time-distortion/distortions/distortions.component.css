@@ -1,0 +1,28 @@
+.content{
+  float:left;
+  position: relative;
+  margin-bottom:inherit;
+}
+
+.contentWell{
+  width:100%;
+  margin-top: 1px;
+}
+
+.content1{
+  width:80%;
+  text-align: left;
+}
+
+.content2{
+  width:20%;
+  margin: auto;
+  vertical-align: middle;
+  text-align: right;
+}
+
+.well {
+    color: #999999;
+    background: #000000;
+    border:1px solid #999999;
+}
