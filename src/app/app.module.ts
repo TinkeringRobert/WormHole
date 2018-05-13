@@ -14,6 +14,8 @@ import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { ScheduleComponent } from './time-distortion/schedule/schedule.component';
 import { HeaderComponent } from './shared/header/header.component';
 
+import { TimeDistortionModule } from './controllers/time-distortion/time-distortion.module';
+
 /*
  * app Routing table
  */
@@ -55,7 +57,8 @@ const appRoutes: Routes = [
       { enableTracing: false } // <-- debugging purposes only
     ),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    TimeDistortionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/cor
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { HttpHeaders } from '@angular/common/http'
+import { TimeDistortionModule } from '../../controllers/time-distortion/time-distortion.module'
 
 @Component({
   selector: 'app-distortions',
@@ -10,19 +11,21 @@ import { HttpHeaders } from '@angular/common/http'
 })
 
 export class DistortionsComponent implements OnInit {
-  @Output() onLoadSchedule: EventEmitter<any> = new EventEmitter<any>();
+  //TimeDistortionModule timeDistortionModule;
 
+  @Output() onLoadSchedule: EventEmitter<any> = new EventEmitter<any>();
   loadedSchedules = false;
   schedules = [];
   reloadInt = null;
   serverIp = "";
   prodRunning = environment.production;
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient,
+              private timeDistortionModule: TimeDistortionModule){
   }
 
   ngOnInit() {
-    console.log(environment);
+    //console.log(environment);
     this.loadSchedules();
 
     this.reloadInt = setInterval(() => {
@@ -31,35 +34,26 @@ export class DistortionsComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    console.log('Leave Distortions');
+    //console.log('Leave Distortions');
     clearInterval(this.reloadInt);
   }
 
   loadSchedule(name) {
-    console.log("Show details for " + name);
+    //console.log("Show details for " + name);
     this.onLoadSchedule.emit(name);
   }
 
   finishTask(schedule) {
     schedule.state = '2';
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
-      })
-    };
-
-    console.log('http://'+environment.server_ip+':'+environment.server_port+'/'+environment.applications.time_distortion+'/action/'+schedule.name+'/'+schedule.state);
-    this.http.post('http://'+environment.server_ip+':'+environment.server_port+'/'+environment.applications.time_distortion+'/action/'+schedule.name+'/'+schedule.state, null, httpOptions).subscribe(data => {
+    this.timeDistortionModule.setAction(schedule.name, schedule.state, data => {
       this.reloadSchedules();
     });
   }
 
   loadSchedules() {
     this.serverIp = environment.server_ip;
-    this.http.get('http://'+environment.server_ip+':'+environment.server_port+'/'+environment.applications.time_distortion+'/actions').subscribe(data => {
+    this.timeDistortionModule.getActions(data => {
       for (var i = 0, len = (<any>data).length; i < len; i++) {
-
         var schedule = data[i];
         this.updateState(schedule);
         this.schedules.push(schedule);
@@ -69,7 +63,7 @@ export class DistortionsComponent implements OnInit {
   }
 
   reloadSchedules() {
-    this.http.get('http://'+environment.server_ip+':'+environment.server_port+'/'+environment.applications.time_distortion+'/actions').subscribe(data => {
+      this.timeDistortionModule.getActions(data => {
       for (var i = 0, len = (<any>data).length; i < len; i++) {
         var schedule = data[i];
         for(var sIndex = 0; sIndex < this.schedules.length; sIndex++){
